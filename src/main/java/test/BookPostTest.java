@@ -20,7 +20,7 @@ public class BookPostTest {
         Response response = given().body(bookFile).
                 contentType(ContentType.JSON).
                         post().
-                then().statusCode(200).body("info",equalTo("Todo saved! Nice job!")).
+                then().statusCode(200).
                 extract().response();
 
         id = response.jsonPath().getString("id");*/
