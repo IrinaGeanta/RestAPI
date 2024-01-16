@@ -27,4 +27,15 @@ public class BaseComponentTest extends BaseTest {
         assertThat(resp.jsonPath().getString("_id"),is(id));
     }
 
+    @Test(priority = 3)
+    public void putAToDo(){
+        Response resp = doPutRequest("api/todos/" + id, DataBuilder.buildToDo().toJSONString(),201);
+        assertThat(resp.jsonPath().getString("msg"),is("Item updated"));
+    }
+
+    @Test(priority = 4)
+    public void deleteAToDo(){
+        Response resp = doDeleteRequest("api/delete/"+id,200);
+        assertThat(resp.jsonPath().getString("msg"),is("Event deleted."));
+    }
 }

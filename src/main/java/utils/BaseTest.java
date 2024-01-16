@@ -28,5 +28,16 @@ public class BaseTest {
         return response;
     }
 
+    public static Response doPutRequest(String path, String body, int statusCode){
+        Response response = given().contentType(ContentType.JSON).body(body).
+                put(path).then().statusCode(statusCode).extract().response();
 
+        return response;
+    }
+
+    public static Response doDeleteRequest(String path, int statusCode){
+        Response response = given().contentType(ContentType.JSON).delete(path).then().statusCode(statusCode).extract().response();
+
+        return response;
+    }
 }

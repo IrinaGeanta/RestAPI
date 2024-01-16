@@ -1,0 +1,16 @@
+[
+  {
+    "employee": {
+      "firstName" : "John",
+      "lastName" : "Doe",
+      "company" : "Google"
+    }
+  },
+  {
+    "employee": {
+      "firstName" : "Bob",
+      "lastName" : "Bobo",
+      "company" : "Apple"
+    }
+  }
+]
