@@ -44,8 +44,12 @@ public class JsonPathExample {
         System.out.println("all males :" + jsonPath.getString("users.findAll{it.gender == 'm' && it.age >=50}.name"));
 
         System.out.println("++++++++++++++++++++++++++++++++");
-        System.out.println("Danyka's id :" + jsonPath.getString("users.findAll{it.name== 'Danyka'}._id"));
-
+        System.out.println("Danyka's id :" + jsonPath.getList("users.findAll{it.name== 'Danyka'}._id"));
+        //find intoarce numai un element, daca sunt mai multe arata doar primul
         System.out.println("Danyka's id :" + jsonPath.getString("users.find{it.name== 'Danyka' && it.age==23}._id"));
+        System.out.println("Danyka and Cristobal:" + jsonPath.getString("users.findAll{it.name== 'Danyka' || it.name=='Cristobal' && it.age==12}._id"));
+
+        System.out.println("all under 18: " + jsonPath.getList("users.findAll{it.age<18}"));
+
     }
 }
