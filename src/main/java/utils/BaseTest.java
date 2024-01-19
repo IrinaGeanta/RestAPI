@@ -11,8 +11,8 @@ public class BaseTest {
 
     @BeforeClass
     public void setup(){
-        RestAssured.baseURI="https://keytodorestapi.herokuapp.com/";
-
+        //RestAssured.baseURI="https://keytodorestapi.herokuapp.com/";
+        RestAssured.baseURI="https://keytrcrud.herokuapp.com/";
     }
 
     public static Response doPostRequest(String path, String body, int statusCode){
