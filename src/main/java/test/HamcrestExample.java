@@ -12,6 +12,8 @@ import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
+import static utils.NumberChecker.*;
+
 public class HamcrestExample {
 
     @Test
@@ -92,6 +94,41 @@ public class HamcrestExample {
 
         assertThat(8,is(lessThan(12)));
         assertThat(films, hasSize(greaterThan(3)));
+
+        String[] array = { jsonPath.getString("name"), jsonPath.getString("rotation_period"),
+                jsonPath.getString("orbital_period"),jsonPath.getString("diameter"),
+                jsonPath.getString("climate")};
+
+        assertThat(array, arrayContaining("Tatooine", "23", "304", "10465", "arid"));
+        assertThat(array, arrayContainingInAnyOrder("304", "10465", "arid", "Tatooine", "23"));
+        assertThat(array, is(not(emptyArray())));
+        assertThat(array, is(not(nullValue())));
+
+        assertThat(resp.asString(), stringContainsInOrder("terrain", "url"));
+        //and
+        assertThat(resp.asString(), both(containsString("population")).and(containsString("terrain")));
+        //or
+        assertThat(name, either(is("Tatooine")).or(is("Tatooine123")).or(is("Terra")));
+        assertThat(resp.asString(),either(containsString("population")).or(containsString("terrain")));
+
+        /*
+	 * "diameter": "10465",
+    	"climate": "arid",
+    	"gravity": "1 standard",
+	 *
+	 */
+
+        String diameter2 = jsonPath.getString("diameter");
+        String climate = jsonPath.getString("climate");
+        String gravity = jsonPath.getString("gravity");
+
+        System.out.println("--------------------------");
+        System.out.println(diameter2);
+        System.out.println(climate);
+        System.out.println(gravity);
+
+        assertThat(diameter2, is(numbersOnly()));
+        assertThat(climate, is(numbersOnly()));
 
     }
 }
