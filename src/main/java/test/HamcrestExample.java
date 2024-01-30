@@ -128,7 +128,7 @@ public class HamcrestExample {
         System.out.println(gravity);
 
         assertThat(diameter2, is(numbersOnly()));
-        assertThat(climate, is(numbersOnly()));
+        assertThat(climate, is(not(numbersOnly())));
 
     }
 }
