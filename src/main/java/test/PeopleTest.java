@@ -31,8 +31,7 @@ public class PeopleTest {
 
        assertThat(array, arrayContaining("blond","fair","blue"));
        assertThat(response.jsonPath().getString("birth_year"), is(not(numbersOnly())));
-       //assertThat(response.jsonPath().getList("species"),is(both(instanceOf(Collection.class)).and(is((Object) hasLength(0)))));
-       System.out.println(response.jsonPath().getList("species").size());
+       assertThat(response.jsonPath().getList("species"),is(emptyCollectionOf(String.class)));
 
        assertThat(response.jsonPath().getList("vehicles").size(),equalTo(response.jsonPath().getList("starships").size()));
        assertThat(response.jsonPath().getList("vehicles"),is(not(equalTo(response.jsonPath().getList("starships")))));
